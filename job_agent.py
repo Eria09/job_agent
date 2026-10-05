@@ -170,6 +170,7 @@ SYSTEM_PROMPT = """你是一位资深的 AI 求职顾问，专门帮助求职者
 - 回答时引用具体数据（提及率、岗位数、薪资区间）
 - 如果查询的技能不存在，如实说明，并推荐相近技能
 - 用中文回答，简洁、分点，不要长篇大论
+- 使用 search_jobs 工具后，必须在回答中逐条列出岗位，并完整保留每个岗位的链接（https:// 开头的 URL），不得省略
 """
 
 
@@ -223,10 +224,21 @@ def main():
             continue
         try:
             result = agent.invoke({"messages": [{"role": "user", "content": q}]})
-            print("\n回答：", result["messages"][-1].content)
+            answer = result["messages"][-1].content
+
+            # ---- 从工具返回中提取链接，若回答里没有则自动补上 ----
+            tool_text = "\n".join(
+                str(m.content) for m in result["messages"]
+                if type(m).__name__ == "ToolMessage"
+            )
+            links = list(dict.fromkeys(re.findall(r"https://[^\s\)\]]+", tool_text)))
+            missing = [l for l in links if l not in answer]
+            if missing:
+                answer += "\n\n📎 岗位投递链接：\n" + "\n".join(f"- {l}" for l in missing[:8])
+
+            print("\n回答：", answer)
         except Exception as e:
             print("❌ 出错：", type(e).__name__, e)
-
 
 if __name__ == "__main__":
     main()

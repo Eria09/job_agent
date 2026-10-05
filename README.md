@@ -81,9 +81,11 @@ python job_agent.py
 
 ![演示1](docs/demo_01.png)
 
-**岗位检索（含真实投递链接）：**
+**岗位检索：**
 
 ![演示2](docs/demo_02.png)
+
+![演示3](docs/demo_03.png)
 
 
 ```
