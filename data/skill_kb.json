@@ -1,0 +1,599 @@
+{
+  "source": "实习僧-AI相关实习岗位(全国)",
+  "sample_size": 504,
+  "collected_at": "2026-10-05",
+  "keywords": [
+    "AI应用开发",
+    "大模型",
+    "AI Agent",
+    "RAG",
+    "LLM",
+    "AIGC",
+    "机器学习",
+    "深度学习",
+    "计算机视觉",
+    "NLP",
+    "算法实习"
+  ],
+  "skills": [
+    {
+      "skill": "Python",
+      "count": 236,
+      "ratio": 0.4683,
+      "jobs": [
+        " AI 平台开发实习生 RBCD",
+        " AI 开发与测试工程师实习生-GS",
+        "3DGS/AIGC算法实习生",
+        "AI Agent Data Analys",
+        "AI Agent FDE 实习生(J14",
+        "AI Agent developer-T"
+      ]
+    },
+    {
+      "skill": "大模型/LLM",
+      "count": 207,
+      "ratio": 0.4107,
+      "jobs": [
+        " AI 开发与测试工程师实习生-GS",
+        "AI Agent Data Analys",
+        "AI Agent FDE 实习生(J14",
+        "AI Agent developer-T",
+        "AI Agent 产品测试实习生",
+        "AI Agent 工程实习生"
+      ]
+    },
+    {
+      "skill": "Agent",
+      "count": 155,
+      "ratio": 0.3075,
+      "jobs": [
+        " AI 开发与测试工程师实习生-GS",
+        "AI AGENT 产品运营实习生",
+        "AI Agent Data Analys",
+        "AI Agent FDE 实习生(J14",
+        "AI Agent developer-T",
+        "AI Agent 工程实习生"
+      ]
+    },
+    {
+      "skill": "深度学习",
+      "count": 113,
+      "ratio": 0.2242,
+      "jobs": [
+        "AI 大模型应用开发实习生-ME",
+        "AI全栈开发工程师",
+        "AI医疗大模型应用开发实习生",
+        "AI大模型开发实习生",
+        "AI应用开发实习生(J14534)",
+        "AI开发实习生"
+      ]
+    },
+    {
+      "skill": "PyTorch",
+      "count": 99,
+      "ratio": 0.1964,
+      "jobs": [
+        "AI医疗大模型应用开发实习生",
+        "AI大模型开发实习生",
+        "AI实习生",
+        "AI应用开发实习生(J14534)",
+        "AI算法实习生",
+        "AI视觉与AIGC应用开发实习生"
+      ]
+    },
+    {
+      "skill": "机器学习",
+      "count": 94,
+      "ratio": 0.1865,
+      "jobs": [
+        "AI Agent 应用运营实习生 - D",
+        "AI 全栈开发实习生",
+        "AI 团队后端实习生（Data Agen",
+        "AI 大模型应用开发实习生-ME",
+        "AIGC专员（base郑州）",
+        "AI全栈开发工程师"
+      ]
+    },
+    {
+      "skill": "C++",
+      "count": 94,
+      "ratio": 0.1865,
+      "jobs": [
+        " AI 开发与测试工程师实习生-GS",
+        "3DGS/AIGC算法实习生",
+        "AI Agent实习生——VM",
+        "AI Agent工程师（大模型 / Ag",
+        "AI 开发工程师",
+        "AI应用开发实习生(J14534)"
+      ]
+    },
+    {
+      "skill": "计算机视觉",
+      "count": 84,
+      "ratio": 0.1667,
+      "jobs": [
+        "3DGS/AIGC算法实习生",
+        "AI 全栈开发实习生",
+        "AIGC 创意策划及执行实习生",
+        "AIGC专员（base郑州）",
+        "AIGC动画制作实习生",
+        "AIGC效果实习生"
+      ]
+    },
+    {
+      "skill": "多模态",
+      "count": 73,
+      "ratio": 0.1448,
+      "jobs": [
+        "AI Agent 产品测试实习生",
+        "AI Agent 研发实习生（视频创作方",
+        "AI 原生应用开发实习生",
+        "AI-算法实习生",
+        "AIGC 创意策划及执行实习生",
+        "AIGC 模型训练实习生"
+      ]
+    },
+    {
+      "skill": "Prompt",
+      "count": 71,
+      "ratio": 0.1409,
+      "jobs": [
+        " AI 开发与测试工程师实习生-GS",
+        "AI Agent Data Analys",
+        "AI Agent FDE 实习生(J14",
+        "AI Agent developer-T",
+        "AI Agent 开发实习生",
+        "AI Agent 研发实习生"
+      ]
+    },
+    {
+      "skill": "数据分析",
+      "count": 71,
+      "ratio": 0.1409,
+      "jobs": [
+        "AI Agent开发工程师（工业场景）(",
+        "AI agent 运营(A73098)",
+        "AI 全栈开发实习生",
+        "AI/IT实习生",
+        "AIGC 创意策划及执行实习生",
+        "AIGC产品运营实习生"
+      ]
+    },
+    {
+      "skill": "RAG",
+      "count": 69,
+      "ratio": 0.1369,
+      "jobs": [
+        " AI 开发与测试工程师实习生-GS",
+        "AI Agent FDE 实习生(J14",
+        "AI Agent developer-T",
+        "AI Agent 工程实习生",
+        "AI Agent 开发实习生",
+        "AI Agent 研发实习生"
+      ]
+    },
+    {
+      "skill": "Java",
+      "count": 66,
+      "ratio": 0.131,
+      "jobs": [
+        " AI 平台开发实习生 RBCD",
+        "AI Agent FDE 实习生(J14",
+        "AI Agent developer-T",
+        "AI Agent 开发实习生",
+        "AI Agent 研发实习生",
+        "AI Agent 研发实习生（视频创作方"
+      ]
+    },
+    {
+      "skill": "NLP",
+      "count": 65,
+      "ratio": 0.129,
+      "jobs": [
+        "AI Agent 应用运营实习生 - D",
+        "AI 原生应用开发实习生",
+        "AI 团队后端实习生（Data Agen",
+        "AI医疗大模型应用开发实习生",
+        "AI大模型开发实习生",
+        "AI应用开发实习生(J14534)"
+      ]
+    },
+    {
+      "skill": "微调/SFT",
+      "count": 57,
+      "ratio": 0.1131,
+      "jobs": [
+        "AI agent学员-XC",
+        "AI 大模型应用开发实习生-ME",
+        "AI-算法实习生",
+        "AI全栈开发实习生",
+        "AI医疗大模型应用开发实习生",
+        "AI大模型应用开发实习生"
+      ]
+    },
+    {
+      "skill": "Linux",
+      "count": 56,
+      "ratio": 0.1111,
+      "jobs": [
+        "AI agent学员-XC",
+        "AI agent开发实习生_C",
+        "AI 全栈开发实习生",
+        "AI交付",
+        "AI应用开发与测试实习生",
+        "AI开发实习生"
+      ]
+    },
+    {
+      "skill": "API/接口",
+      "count": 54,
+      "ratio": 0.1071,
+      "jobs": [
+        "AI Agent FDE 实习生(J14",
+        "AI Agent developer-T",
+        "AI Agent 产品测试实习生",
+        "AI Agent 开发实习生",
+        "AI Agent开发工程师（工业场景）(",
+        "AI Application Devel"
+      ]
+    },
+    {
+      "skill": "TensorFlow",
+      "count": 54,
+      "ratio": 0.1071,
+      "jobs": [
+        "AI大模型开发实习生",
+        "AI应用开发实习生(J14534)",
+        "AI算法实习生",
+        "AI视觉与AIGC应用开发实习生",
+        "AI软件开发工程师实习生-2027届(A",
+        "Agent算法工程师(实习) 北京/上海"
+      ]
+    },
+    {
+      "skill": "数据结构算法",
+      "count": 53,
+      "ratio": 0.1052,
+      "jobs": [
+        "AI Agent developer-T",
+        "AI Agent 研发实习生（视频创作方",
+        "AI Agent工程师（大模型 / Ag",
+        "AI agent开发实习生_C",
+        "AI 团队后端实习生（Data Agen",
+        "AI 开发工程师"
+      ]
+    },
+    {
+      "skill": "SQL",
+      "count": 46,
+      "ratio": 0.0913,
+      "jobs": [
+        "AI Agent Data Analys",
+        "AI Agent 算法实习生-两轮(J2",
+        "AI Agent开发工程师（工业场景）(",
+        "AI Agent策略运营实习生 - Ti",
+        "AI agent开发实习生_C",
+        "AI 团队后端实习生（Data Agen"
+      ]
+    },
+    {
+      "skill": "Git",
+      "count": 36,
+      "ratio": 0.0714,
+      "jobs": [
+        "AI AGENT 产品运营实习生",
+        "AI Agent developer-T",
+        "AI agent学员-XC",
+        "AI agent开发实习生_C",
+        "AI 全栈开发与整车数字化实习生",
+        "AI 全栈开发实习生"
+      ]
+    },
+    {
+      "skill": "知识库",
+      "count": 33,
+      "ratio": 0.0655,
+      "jobs": [
+        "AI Agent FDE 实习生(J14",
+        "AI Agent developer-T",
+        "AI Agent工程师（大模型 / Ag",
+        "AI Agent开发实习生-全球法规智能",
+        "AI Agent开发（可转正）",
+        "AI/IT实习生"
+      ]
+    },
+    {
+      "skill": "LangChain",
+      "count": 27,
+      "ratio": 0.0536,
+      "jobs": [
+        "AI Agent FDE 实习生(J14",
+        "AI Agent 开发实习生",
+        "AI Agent 研发实习生",
+        "AI Agent开发工程师（工业场景）(",
+        "AI Agent开发（可转正）",
+        "AI agent开发实习生_C"
+      ]
+    },
+    {
+      "skill": "Cursor/ClaudeCode",
+      "count": 26,
+      "ratio": 0.0516,
+      "jobs": [
+        "AI Agent 开发实习生",
+        "AI Agent 研发实习生（视频创作方",
+        "AI Agent工程师（大模型 / Ag",
+        "AI agent开发实习生_C",
+        "AI 原生应用开发实习生",
+        "AI 开发工程师"
+      ]
+    },
+    {
+      "skill": "分布式",
+      "count": 25,
+      "ratio": 0.0496,
+      "jobs": [
+        "AI Agent 工程实习生",
+        "AI服务后端开发工程师实习生 - Dat",
+        "VLA大模型算法实习生(A198111)",
+        "Voyager-多模态大模型算法实习生",
+        "【Ace顶尖实习生】AI coding ",
+        "【源点顶尖人才计划】大模型算法实习(A2"
+      ]
+    },
+    {
+      "skill": "Vue/React",
+      "count": 21,
+      "ratio": 0.0417,
+      "jobs": [
+        "AI agent开发实习生_C",
+        "AI 全栈开发实习生",
+        "AI全栈开发实习生",
+        "AI全栈开发实习生-北京",
+        "AI大模型开发实习生",
+        "AI开发实习生"
+      ]
+    },
+    {
+      "skill": "MCP",
+      "count": 15,
+      "ratio": 0.0298,
+      "jobs": [
+        "AI Agent FDE 实习生(J14",
+        "AI 大模型应用开发实习生-ME",
+        "AIGC产品运营实习生",
+        "AI全栈开发实习生",
+        "AI应用开发实习生（法律科技方向）",
+        "Agent平台全栈研发工程师（练习生）"
+      ]
+    },
+    {
+      "skill": "FastAPI/Flask/Django",
+      "count": 15,
+      "ratio": 0.0298,
+      "jobs": [
+        "AI agent开发实习生_C",
+        "AI全栈开发实习生",
+        "AI大模型开发实习生",
+        "AI应用开发实习生（法律科技方向）",
+        "AI数字化开发实习生——VM",
+        "AI数字化开发工实习生——VM"
+      ]
+    },
+    {
+      "skill": "Excel/BI",
+      "count": 15,
+      "ratio": 0.0298,
+      "jobs": [
+        "A.O.史密斯电商-电商运营实习生",
+        "AI Agent策略运营实习生 - Ti",
+        "Tourism Marketing In",
+        "大模型产品实习生-TikTok",
+        "审核策略大模型运营实习生",
+        "新媒体投放实习生（百词斩硬件）"
+      ]
+    },
+    {
+      "skill": "MySQL",
+      "count": 15,
+      "ratio": 0.0298,
+      "jobs": [
+        "AI agent开发实习生_C",
+        "AI 团队后端实习生（Data Agen",
+        "AI全栈开发实习生-北京",
+        "AI医疗信息化实习生(系统开发方向)",
+        "AI智能体开发实习生—BD",
+        "Agent平台全栈研发工程师（练习生）"
+      ]
+    },
+    {
+      "skill": "Spring",
+      "count": 12,
+      "ratio": 0.0238,
+      "jobs": [
+        "AI全栈开发实习生",
+        "AI全栈开发实习生-北京",
+        "【28/29届】AI后端/算法开发实习生",
+        "全栈开发实习生（Vibe Coding ",
+        "公司直属-AI应用开发实习生(J1627",
+        "后端研发实习生（Java / AIGC "
+      ]
+    },
+    {
+      "skill": "LlamaIndex",
+      "count": 10,
+      "ratio": 0.0198,
+      "jobs": [
+        "AI agent开发实习生_C",
+        "AI产品/Agent开发实习生（Agen",
+        "AI全栈开发实习生",
+        "AI全栈开发实习生-北京",
+        "AI医疗大模型应用开发实习生",
+        "AI大模型应用开发实习生"
+      ]
+    },
+    {
+      "skill": "Docker",
+      "count": 10,
+      "ratio": 0.0198,
+      "jobs": [
+        "AI agent学员-XC",
+        "AI agent开发实习生_C",
+        "AI 全栈开发实习生",
+        "AI交付",
+        "AI全栈开发实习生-北京",
+        "Python开发实习生（大模型方向）"
+      ]
+    },
+    {
+      "skill": "Redis",
+      "count": 10,
+      "ratio": 0.0198,
+      "jobs": [
+        "AI全栈开发实习生-北京",
+        "Agent平台全栈研发工程师（练习生）",
+        "Ai Agent后端实习生",
+        "【28/29届】AI后端/算法开发实习生",
+        "全栈开发实习生（Vibe Coding ",
+        "后端开发"
+      ]
+    },
+    {
+      "skill": "Spark",
+      "count": 9,
+      "ratio": 0.0179,
+      "jobs": [
+        "AI Agent 算法实习生-两轮(J2",
+        "NLP实习生",
+        "大模型应用算法工程师",
+        "大模型数据策略研发实习生",
+        "搜索算法工程师",
+        "数据算法实习生"
+      ]
+    },
+    {
+      "skill": "Go",
+      "count": 8,
+      "ratio": 0.0159,
+      "jobs": [
+        "AI Agent 开发实习生",
+        "AI Agent 研发实习生（视频创作方",
+        "AI应用开发（可转正）",
+        "AI算法工程师（NLP方向）",
+        "Ai Agent后端实习生",
+        "大模型工程架构研发实习生"
+      ]
+    },
+    {
+      "skill": "C#",
+      "count": 8,
+      "ratio": 0.0159,
+      "jobs": [
+        "AI医疗信息化实习生(系统开发方向)",
+        "AI实习生",
+        "AI开发实习生",
+        "图像算法实习生",
+        "算法工程师（图像/信号/机器学习/NLP",
+        "视觉软件工程师"
+      ]
+    },
+    {
+      "skill": "向量数据库",
+      "count": 7,
+      "ratio": 0.0139,
+      "jobs": [
+        "AI Agent开发实习生-全球法规智能",
+        "AI agent开发实习生_C",
+        "AI/IT实习生",
+        "AI应用开发与测试实习生",
+        "AI智能体开发实习生—BD",
+        "公司直属-科技研发部-AI Agent研"
+      ]
+    },
+    {
+      "skill": "推荐系统",
+      "count": 6,
+      "ratio": 0.0119,
+      "jobs": [
+        "AI Agent 应用运营实习生 - D",
+        "AI应用开发实习生（研发效能方向）-【商",
+        "【Ace顶尖实习生】基于Diffusio",
+        "推荐算法实习生",
+        "游戏算法实习生",
+        "生成式定向实习生（大模型方向）(J104"
+      ]
+    },
+    {
+      "skill": "语音",
+      "count": 5,
+      "ratio": 0.0099,
+      "jobs": [
+        "AI服务后端开发工程师实习生 - Dat",
+        "Aigc多模态智能体算法工程师(J106",
+        "SRCB-人形机器人系统集成与优化实习生",
+        "算法工程师（语音实习）",
+        "语音算法实习生"
+      ]
+    },
+    {
+      "skill": "MongoDB",
+      "count": 5,
+      "ratio": 0.0099,
+      "jobs": [
+        "AI 团队后端实习生（Data Agen",
+        "SRCX-AI Agent平台建设（实习",
+        "全栈开发实习生（Vibe Coding ",
+        "后端开发",
+        "计算机视觉IoT开发工程师 （战略实习生"
+      ]
+    },
+    {
+      "skill": "Hadoop",
+      "count": 4,
+      "ratio": 0.0079,
+      "jobs": [
+        "推荐算法实习生",
+        "搜索算法工程师",
+        "算法工程师（数据挖掘实习)",
+        "营销大模型算法"
+      ]
+    },
+    {
+      "skill": "Kafka",
+      "count": 3,
+      "ratio": 0.006,
+      "jobs": [
+        "AI全栈开发实习生-北京",
+        "全栈开发实习生（Vibe Coding ",
+        "后端研发实习生（Java / AIGC "
+      ]
+    },
+    {
+      "skill": "K8s",
+      "count": 3,
+      "ratio": 0.006,
+      "jobs": [
+        "全栈开发实习生（Vibe Coding ",
+        "大模型应用算法工程师",
+        "数据传输服务（DTS）研发实习生（Jav"
+      ]
+    },
+    {
+      "skill": "PHP",
+      "count": 2,
+      "ratio": 0.004,
+      "jobs": [
+        "AI Agent开发（可转正）",
+        "搜索AI产品后端开发工程师"
+      ]
+    },
+    {
+      "skill": "Elasticsearch",
+      "count": 1,
+      "ratio": 0.002,
+      "jobs": [
+        "后端研发实习生（Java / AIGC "
+      ]
+    }
+  ]
+}
