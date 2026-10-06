@@ -1,4 +1,6 @@
-﻿langchain>=1.0
-langchain-core>=1.0
-langchain-deepseek>=1.0
-python-dotenv>=1.0
+# 锁到实际跑通的版本。写 langchain>=1.0 等于没锁：它允许未来的 2.0
+# 破坏性升级，而 create_agent / @tool 的签名只在 1.x 内稳定。
+langchain==1.2.12
+langchain-core==1.2.18
+langchain-deepseek==1.0.1
+python-dotenv==1.2.1
