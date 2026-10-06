@@ -1,4 +1,4 @@
-﻿"""
+"""
 AI 求职辅助 Agent
 ==================
 基于 LangChain 1.x create_agent + ReAct 范式，封装 3 个工具：
@@ -21,6 +21,16 @@ from dotenv import load_dotenv
 from langchain.agents import create_agent
 from langchain_core.tools import tool
 from langchain_deepseek import ChatDeepSeek
+
+# ---------------- 控制台编码兜底 ----------------
+# Windows 中文控制台默认 cp936，一旦 stdout 被重定向成管道（PyCharm Run 窗口、
+# `python job_agent.py --test > log.txt`、CI），打印 ▪ / ✅ 会直接抛
+# UnicodeEncodeError 中断脚本。这里统一兜底，保证任何终端都能跑完。
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, OSError):
+        pass
 
 # ---------------- 配置 ----------------
 load_dotenv()
