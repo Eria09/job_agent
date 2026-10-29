@@ -1,7 +1,7 @@
 """
 AI 求职辅助 Agent
 ==================
-基于 LangChain 1.x create_agent + ReAct 范式，封装 3 个工具：
+基于 LangChain 1.x create_agent + ReAct 范式，封装 4个工具：
 
   1. query_skill   查询某个技能在 AI 岗位中的需求程度
   2. query_salary  按岗位关键词统计薪资区间
@@ -22,17 +22,12 @@ from langchain.agents import create_agent
 from langchain_core.tools import tool
 from langchain_deepseek import ChatDeepSeek
 
-# ---------------- 控制台编码兜底 ----------------
-# Windows 中文控制台默认 cp936，一旦 stdout 被重定向成管道（PyCharm Run 窗口、
-# `python job_agent.py --test > log.txt`、CI），打印 ▪ / ✅ 会直接抛
-# UnicodeEncodeError 中断脚本。这里统一兜底，保证任何终端都能跑完。
 for _stream in (sys.stdout, sys.stderr):
     try:
         _stream.reconfigure(encoding="utf-8", errors="replace")
     except (AttributeError, OSError):
         pass
 
-# ---------------- 配置 ----------------
 load_dotenv()
 
 DEEPSEEK_KEY = os.getenv("DEEPSEEK_API_KEY")
@@ -51,7 +46,7 @@ if not SKILL_FILE.exists() or not JOBS_FILE.exists():
         f"     {JOBS_FILE}"
     )
 
-# ---------------- 加载数据 ----------------
+
 _skill_raw = json.loads(SKILL_FILE.read_text(encoding="utf-8"))
 SKILL_DB = {s["skill"].lower(): s for s in _skill_raw["skills"]}
 SAMPLE_SIZE = _skill_raw["sample_size"]
@@ -62,7 +57,6 @@ print(f"[数据] 技能库 {len(SKILL_DB)} 个技能（样本 {SAMPLE_SIZE} 条 
 print(f"[数据] 岗位库 {len(JOBS)} 条岗位")
 
 
-# ---------------- 工具 1：技能需求查询 ----------------
 @tool
 def query_skill(skill: str) -> str:
     """查询某个技术技能在 AI 岗位中的需求程度（提及率、岗位数、典型岗位）。
@@ -78,6 +72,7 @@ def query_skill(skill: str) -> str:
             top = "、".join(list(SKILL_DB)[:20])
             return f"技能库中没有「{skill}」。目前可查：{top} ……"
         hit = max(cands, key=lambda x: x["count"])
+        return hit
 
     jobs = "、".join(hit["jobs"][:5]) if hit.get("jobs") else "—"
     return (
@@ -88,7 +83,6 @@ def query_skill(skill: str) -> str:
     )
 
 
-# ---------------- 工具 2：薪资查询 ----------------
 def _parse_salary(text: str):
     """从 '200-300/天' 中解析出 [200, 300]（单位：元/天）"""
     m = re.search(r"(\d+)\s*-\s*(\d+)", text or "")
@@ -166,14 +160,55 @@ def search_jobs(city: str = "", education: str = "", skill: str = "", limit: int
         )
     return "\n".join(lines)
 
+def _find(name:str):
+    key = name.strip().lower()
+    hit = SKILL_DB.get(key)
+    if hit is None:
+        cands = [v for k, v in SKILL_DB.items() if key in k or k in key]
+        if not cands:
+           return None
+        hit = max(cands, key=lambda x: x["count"])
+    return hit
+
+
+@tool
+def compare_skills(skill_a:str, skill_b:str) -> str:
+    """对比两个技能在 AI 岗位中的需求差距，判断哪个更值得学。
+
+    Args:
+        skill_a: 第一个技能名，例如 RAG
+        skill_b: 第二个技能名，例如 Agent
+    """
+    hit_a = _find(skill_a)
+    hit_b = _find(skill_b)
+    if hit_a is None or hit_b is None:
+        miss = skill_a if hit_a is None else skill_b
+        return f"技能库中没有「{miss}」，无法对比。"
+    name_a, name_b = hit_a["skill"], hit_b["skill"]
+    a_cnt, b_cnt = hit_a["count"], hit_b["count"]
+    a_ratio, b_ratio = hit_a["ratio"], hit_b["ratio"]
+    diff = abs(a_ratio - b_ratio) * 100
+    better = name_a if a_cnt > b_cnt else name_b
+
+    big_name, small_name = (name_a, name_b) if a_cnt > b_cnt else (name_b, name_a)
+    big_cnt, small_cnt = max(a_cnt, b_cnt), min(a_cnt, b_cnt)
+    times = round(big_cnt / small_cnt, 1) if small_cnt else "-"
+    return (
+        f"【技能对比】{name_a} vs {name_b}（样本 {SAMPLE_SIZE} 条 JD）\n"
+        f"- {name_a}：提及 {a_cnt} 条 / {a_ratio:.1%}\n"
+        f"- {name_b}：提及 {b_cnt} 条 / {b_ratio:.1%}\n"
+        f"- 差距：{diff:.1f} 个百分点（{big_name} 的提及数约为 {small_name} 的 {times} 倍）\n"
+        f"- 结论：{better} 的市场需求更高"
+    )
 
 # ---------------- Agent ----------------
 SYSTEM_PROMPT = """你是一位资深的 AI 求职顾问，专门帮助求职者分析 AI / 大模型 / Agent 方向的实习岗位市场。
 
-你可以调用三个工具：
+你可以调用四个工具：
 1. query_skill(skill)                        —— 查询某项技能在岗位中的需求程度
 2. query_salary(job_keyword)                 —— 查询某类岗位的薪资区间
 3. search_jobs(city, education, skill, limit) —— 按条件检索具体岗位
+4. compare_skills(skill_a, skill_b)          —— 对比两个技能的需求差距，判断哪个更值得学
 
 工作原则：
 - 必须先调用工具获取真实数据，再基于数据回答，禁止凭记忆编造数字
@@ -181,6 +216,7 @@ SYSTEM_PROMPT = """你是一位资深的 AI 求职顾问，专门帮助求职者
 - 如果查询的技能不存在，如实说明，并推荐相近技能
 - 用中文回答，简洁、分点，不要长篇大论
 - 使用 search_jobs 工具后，必须在回答中逐条列出岗位，并完整保留每个岗位的链接（https:// 开头的 URL），不得省略
+- 当用户询问两个技能"哪个更值得学 / 该先学哪个"时，必须调用 compare_skills，不要自己比较
 """
 
 
@@ -195,7 +231,7 @@ def build_agent():
     )
     return create_agent(
         llm,
-        tools=[query_skill, query_salary, search_jobs],
+        tools=[query_skill, query_salary, search_jobs, compare_skills],
         system_prompt=SYSTEM_PROMPT,
     )
 
@@ -211,9 +247,9 @@ def self_test():
     print(query_salary.invoke({"job_keyword": "AI应用开发"}))
     print("\n[3] search_jobs(city='北京', education='本科', skill='Agent', limit=3)")
     print(search_jobs.invoke({"city": "北京", "education": "本科", "skill": "Agent", "limit": 3}))
+    print("\n[4] compare_skills(skill_a='RAG', skill_b='Agent')")
+    print(compare_skills.invoke({"skill_a": "RAG", "skill_b": "Agent"}))
     print("\n✅ 工具自检完成")
-
-
 # ---------------- 主流程 ----------------
 def main():
     if "--test" in sys.argv:

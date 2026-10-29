@@ -1,7 +1,7 @@
 ﻿# AI 求职辅助 Agent
 
 基于 **LangChain 1.x `create_agent`** 构建的求职分析智能体（ReAct 范式），
-使用 `@tool` 封装三个工具，帮助求职者分析 AI / 大模型 / Agent 方向的实习岗位市场。
+使用 `@tool` 封装四个工具，帮助求职者分析 AI / 大模型 / Agent 方向的实习岗位市场。
 
 **数据来源**：自采 **504 条**真实 AI 相关实习岗位 JD（实习僧，全国）
 
@@ -20,6 +20,7 @@
 | `query_skill(skill)` | 查询某项技能在 AI 岗位中的需求程度（提及率、岗位数、典型岗位） |
 | `query_salary(job_keyword)` | 按岗位关键词统计薪资区间（日薪中位数） |
 | `search_jobs(city, education, skill, limit)` | 按城市 / 学历 / 技能检索具体岗位，返回可投递链接 |
+| compare_skills(skill_a, skill_b) | 对比两个技能的需求差距，判断哪个更值得学 |
 
 Agent 会自主决定调用哪个工具、按什么顺序调用，并基于**真实数据**作答。
 
@@ -109,7 +110,7 @@ python job_agent.py
 
 ```
 job_agent/
-├── job_agent.py            # 主程序：数据加载 + 3 个工具 + Agent 组装
+├── job_agent.py            # 主程序：数据加载 + 4 个工具 + Agent 组装
 ├── requirements.txt
 ├── .env.example
 ├── .gitignore
@@ -126,7 +127,7 @@ job_agent/
 
 ## 后续计划
 
-- [x] 提供沙箱自测模式（`--test`），无需大模型即可验证 3 个工具
+- [x] 提供沙箱自测模式（`--test`），无需大模型即可验证 4 个工具
 - [x] 工具返回的岗位链接自动补齐（避免大模型总结时丢失长 URL）
 - [ ] 增加「简历-JD 匹配度」工具
 - [ ] 接入向量检索，支持自然语言岗位搜索
