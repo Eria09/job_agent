@@ -16,7 +16,6 @@ import re
 import statistics
 import sys
 from pathlib import Path
-
 from dotenv import load_dotenv
 from langchain.agents import create_agent
 from langchain_core.tools import tool
@@ -37,6 +36,9 @@ MODEL = os.getenv("LLM_MODEL", "deepseek-chat")
 BASE_DIR = Path(__file__).parent
 SKILL_FILE = BASE_DIR / "data" / "skill_kb.json"
 JOBS_FILE = BASE_DIR / "data" / "jobs.json"
+META_FILE = BASE_DIR / "data" / "meta.json"
+META = json.loads(META_FILE.read_text(encoding="utf-8")) if META_FILE.exists() else {}
+DATA_DATE = META.get("fetched_at", "未知")
 
 if not SKILL_FILE.exists() or not JOBS_FILE.exists():
     raise SystemExit(
@@ -258,10 +260,12 @@ def main():
 
     agent = build_agent()
     print("=" * 62)
+    print(f"岗位数据截至 {DATA_DATE}（共 {META.get('count', len(JOBS))} 条）")
     print("AI 求职辅助 Agent  ·  输入 q 退出")
     print("试试问：RAG 这个技能市场需求怎么样？")
     print("=" * 62)
 
+    history = []
     while True:
         q = input("\n你问：").strip()
         if q.lower() in ("q", "quit", "exit"):
@@ -269,7 +273,8 @@ def main():
         if not q:
             continue
         try:
-            result = agent.invoke({"messages": [{"role": "user", "content": q}]})
+            history.append({"role":"user","content":q})
+            result = agent.invoke({"messages":history})
             answer = result["messages"][-1].content
 
             # ---- 从工具返回中提取链接，若回答里没有则自动补上 ----
@@ -283,6 +288,7 @@ def main():
                 answer += "\n\n📎 岗位投递链接：\n" + "\n".join(f"- {l}" for l in missing[:8])
 
             print("\n回答：", answer)
+            history = result["messages"]
         except Exception as e:
             print("❌ 出错：", type(e).__name__, e)
 
