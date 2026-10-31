@@ -74,7 +74,6 @@ def query_skill(skill: str) -> str:
             top = "、".join(list(SKILL_DB)[:20])
             return f"技能库中没有「{skill}」。目前可查：{top} ……"
         hit = max(cands, key=lambda x: x["count"])
-        return hit
 
     jobs = "、".join(hit["jobs"][:5]) if hit.get("jobs") else "—"
     return (
@@ -168,7 +167,7 @@ def _find(name:str):
     if hit is None:
         cands = [v for k, v in SKILL_DB.items() if key in k or k in key]
         if not cands:
-           return None
+            return None
         hit = max(cands, key=lambda x: x["count"])
     return hit
 
@@ -273,13 +272,15 @@ def main():
         if not q:
             continue
         try:
+            n=len(history)
             history.append({"role":"user","content":q})
             result = agent.invoke({"messages":history})
             answer = result["messages"][-1].content
 
             # ---- 从工具返回中提取链接，若回答里没有则自动补上 ----
+            new_msgs=result["messages"][n:]
             tool_text = "\n".join(
-                str(m.content) for m in result["messages"]
+                str(m.content) for m in new_msgs
                 if type(m).__name__ == "ToolMessage"
             )
             links = list(dict.fromkeys(re.findall(r"https://[^\s\)\]]+", tool_text)))
