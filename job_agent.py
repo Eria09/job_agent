@@ -229,6 +229,8 @@ def build_agent():
         api_key=DEEPSEEK_KEY,
         api_base=DEEPSEEK_URL,
         temperature=0,
+        timeout=30,
+        max_retries=1,
     )
     return create_agent(
         llm,

@@ -87,8 +87,11 @@ if q:
     with st.chat_message("assistant"):
         with st.spinner("调用工具中…"):
             agent = build_agent()
-            res = agent.invoke({"messages": st.session_state.msgs})
-            ans = res["messages"][-1].content
+            res = agent.invoke(
+                {"messages": st.session_state.msgs},
+                config={"recursion_limit": 12},
+            )
+            ans = res["messages"][-1].content or "(模型没有返回文字内容，可能停在工具调用)"
         st.markdown(ans)
 
     st.session_state.msgs = res["messages"]
