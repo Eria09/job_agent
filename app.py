@@ -1,4 +1,4 @@
-﻿import os
+import os
 import streamlit as st
 from dotenv import load_dotenv
 
@@ -16,6 +16,69 @@ def _env(name: str, default: str = "") -> str:
     except Exception:
         pass
     return os.getenv(name, default)
+
+
+def _net_diag() -> None:
+    """云端连通性自检：定位 Streamlit Cloud 到 DeepSeek 的网络问题。"""
+    import json as _json
+    import socket
+    import sys
+    import time
+    import urllib.error
+    import urllib.request
+
+    key = os.getenv("DEEPSEEK_API_KEY", "")
+    base = os.getenv("DEEPSEEK_BASE_URL", "")
+    st.write(f"Python `{sys.version.split()[0]}`")
+    st.write(f"key 已注入：`{bool(key)}`（{len(key)} 字符）")
+    st.write(f"base_url：`{base}`")
+
+    host = "api.deepseek.com"
+    t0 = time.time()
+    try:
+        ip = socket.gethostbyname(host)
+        st.success(f"DNS {host} → {ip}　{time.time() - t0:.2f}s")
+    except Exception as e:
+        st.error(f"DNS 失败：{e!r}")
+        return
+
+    t = time.time()
+    try:
+        req = urllib.request.Request(
+            f"https://{host}/v1/models",
+            headers={"Authorization": f"Bearer {key}"},
+        )
+        with urllib.request.urlopen(req, timeout=20) as r:
+            st.success(f"GET /v1/models → HTTP {r.status}　{time.time() - t:.2f}s")
+    except urllib.error.HTTPError as e:
+        st.error(f"GET /v1/models → HTTP {e.code}　{time.time() - t:.2f}s")
+    except Exception as e:
+        st.error(f"GET /v1/models → 失败 {e!r}　{time.time() - t:.2f}s")
+
+    body = _json.dumps(
+        {
+            "model": os.getenv("LLM_MODEL", "deepseek-chat"),
+            "messages": [{"role": "user", "content": "hi"}],
+            "max_tokens": 1,
+        }
+    ).encode()
+    t = time.time()
+    try:
+        req = urllib.request.Request(
+            f"https://{host}/chat/completions",
+            data=body,
+            headers={
+                "Authorization": f"Bearer {key}",
+                "Content-Type": "application/json",
+            },
+        )
+        with urllib.request.urlopen(req, timeout=30) as r:
+            _json.loads(r.read())
+            st.success(f"POST /chat/completions → 200　{time.time() - t:.2f}s")
+    except urllib.error.HTTPError as e:
+        st.error(f"POST /chat/completions → HTTP {e.code}　{time.time() - t:.2f}s")
+    except Exception as e:
+        st.error(f"POST /chat/completions → 失败 {e!r}　{time.time() - t:.2f}s")
 
 
 # 只在有值时才覆盖，否则会把 .env 里的值冲成空串
@@ -51,6 +114,9 @@ with st.sidebar:
     )
     st.divider()
     st.caption("首次加载约需 10–20 秒（模型与数据初始化）")
+    st.divider()
+    if st.button("🩺 云端连通性自检"):
+        _net_diag()
 
 if "n" not in st.session_state:
     st.session_state.n = 0
