@@ -60,9 +60,13 @@ if "msgs" not in st.session_state:
     st.session_state.msgs = []
 
 for m in st.session_state.msgs:
-    role = "user" if m.type == "human" else "assistant"
+    if isinstance(m, dict):
+        role, content = m.get("role", "user"), m.get("content", "")
+    else:
+        role = "user" if m.type == "human" else "assistant"
+        content = m.content
     with st.chat_message(role):
-        st.markdown(m.content)
+        st.markdown(content)
 
 st.caption(
     "试试：`RAG 和 Agent 哪个更值得先学？`　|　`北京有哪些本科能投的 Agent 岗`　|　"
