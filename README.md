@@ -1,5 +1,7 @@
 ﻿# AI 求职辅助 Agent
 
+ **在线 Demo**：https://research-jobagent.streamlit.app
+
 基于 **LangChain 1.x `create_agent`** 构建的求职分析智能体（ReAct 范式），
 使用 `@tool` 封装四个工具，帮助求职者分析 AI / 大模型 / Agent 方向的实习岗位市场。
 
@@ -102,11 +104,11 @@ python job_agent.py
 
 ![薪资查询](docs/demo_02.png)
 
-**岗位检索（含真实投递链接）：**
+**岗位检索：**
 
 ![岗位检索](docs/demo_03.png)
 
-**技能对比（第 4 个工具）：**
+**技能对比：**
 
 ![技能对比](docs/demo_04.png)
 
